@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodOrder", "Food\FoodOrder.csproj", "{C3AD3C2A-C7EC-4E32-A54E-E249B7E4E809}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodOrder.Tests", "FoodOrder.Tests\FoodOrder.Tests.csproj", "{0DEEBFA1-9DB0-4E66-90BF-6D4A92386F34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodOrder.DataAccess", "FoodOrder.DataAccess\FoodOrder.DataAccess.csproj", "{730C7A58-91EB-4C4E-A85D-077DAD0A4AA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbMigration", "DbMigration\DbMigration.csproj", "{8E68C5C0-D52F-41D4-8EFD-3BDC323C1501}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHibernate.IdentityStore", "..\..\libraries\NHibernate.Identity20\NHibernate.IdentityStore\NHibernate.IdentityStore.csproj", "{7FD8396C-C0EE-4CA8-9838-08F9FA78C93F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3AD3C2A-C7EC-4E32-A54E-E249B7E4E809}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3AD3C2A-C7EC-4E32-A54E-E249B7E4E809}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3AD3C2A-C7EC-4E32-A54E-E249B7E4E809}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3AD3C2A-C7EC-4E32-A54E-E249B7E4E809}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DEEBFA1-9DB0-4E66-90BF-6D4A92386F34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DEEBFA1-9DB0-4E66-90BF-6D4A92386F34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DEEBFA1-9DB0-4E66-90BF-6D4A92386F34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DEEBFA1-9DB0-4E66-90BF-6D4A92386F34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{730C7A58-91EB-4C4E-A85D-077DAD0A4AA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{730C7A58-91EB-4C4E-A85D-077DAD0A4AA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{730C7A58-91EB-4C4E-A85D-077DAD0A4AA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{730C7A58-91EB-4C4E-A85D-077DAD0A4AA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E68C5C0-D52F-41D4-8EFD-3BDC323C1501}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E68C5C0-D52F-41D4-8EFD-3BDC323C1501}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E68C5C0-D52F-41D4-8EFD-3BDC323C1501}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E68C5C0-D52F-41D4-8EFD-3BDC323C1501}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FD8396C-C0EE-4CA8-9838-08F9FA78C93F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FD8396C-C0EE-4CA8-9838-08F9FA78C93F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FD8396C-C0EE-4CA8-9838-08F9FA78C93F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FD8396C-C0EE-4CA8-9838-08F9FA78C93F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

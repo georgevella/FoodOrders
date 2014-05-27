@@ -1,0 +1,73 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>@ViewBag.Title</title>
+       
+        @*    @Scripts.Render("~/script/modernizr")
+    @Scripts.Render("~/script/jquery")
+    @Scripts.Render("~/script/jqueryui")
+    @Scripts.Render("~/script/bootsrap")*@
+    
+        @*<script src="~/Scripts/modernizr-2.7.2.js" ></script>    
+        <script src="~/Scripts/jquery-2.1.1.js" ></script>
+        <script src="~/Scripts/jquery-ui-1.10.4.js" ></script>
+        <script src="~/Scripts/jquery-ui-1.10.4.js" ></script>
+        <script src="/Scripts/jquery.unobtrusive-ajax.js" ></script>
+        <script src="/Scripts/jquery.validate.js" ></script>
+        <script src="/Scripts/jquery.validate.unobtrusive.js" ></script>
+        <script src="/Scripts/bootstrap.js" ></script>
+        <script src="/Scripts/knockout-3.1.0.js" ></script>*@
+
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/jqueryui")
+    </head>
+    <body>
+       
+        <div class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Food Orders", "Index", "Home", new { area = "" }, new { @class = "navbar-brand"})                    
+                </div>
+                
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    @if (Request.IsAuthenticated)
+                    {
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Start Order", "New", "Order")</li>
+                        </ul>
+                    }
+                    @Html.Partial("_LoginPartial")
+                </div><!-- /.navbar-collapse -->
+            </div>
+        </div> 
+        
+        <div class="container-fluid body-content">
+            
+            @RenderBody()
+            
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+
+        </div>
+        
+
+        @RenderSection("scripts", required: false)
+
+    </body>
+</html>

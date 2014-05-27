@@ -1,0 +1,32 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 10px;
+}
+
+.table-hover tbody tr.selected > td {
+  background-color: red;
+}
+
+.restaurant-menu {
+    
+}
+
+.restaurant-menu .item {
+    
+}
+
+.restaurant-menu .item .item-price {
+    width: 60px;
+}
+
+.admin-console > li > a {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}

@@ -1,0 +1,106 @@
+﻿@model FoodOrder.ViewModels.AdminConsoleViewModel
+
+@{
+    ViewBag.Title = "Administrative Console";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+@section scripts
+{
+    <script type="text/javascript">
+        $("#dialog").dialog({
+            autoOpen: false,
+            modal: true
+        });
+
+        $("#addStore").click(function() {
+            $("#dialog").dialog("open");
+        });
+    
+        function saveStoreSuccess(content) {
+            alert("saveStoreSuccess");
+            $("#dialog").dialog("close");
+        }
+        function saveStoreComplete() {
+            alert("saveStoreComplete");
+        }
+        function saveStoreFailed() {
+            alert("saveStoreFailed");
+        }
+
+
+        $("#saveStoreCancel").click(function() {
+            $("#dialog").dialog("close");
+        });
+            @*$.ajax({
+                type: "POST",
+                url: "@Url.Action("SaveStore")",
+            data: $("#saveStoreForm").serialize(),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) { saveStoreSuccess(data); },
+        failure: function () { saveStoreFailed(); }
+        });*@
+    </script>
+}
+
+<div class="row">
+    <div class="col-md-2">
+        
+        <ul class="nav nav-pills nav-stacked admin-console">
+            @*<li>@Html.ActionLink("Stores", "Stores")</li>
+            <li>@Html.ActionLink("Settings", "Settings")</li>*@
+            <li class="active"><a href="#stores" data-toggle="pill">Stores</a></li>
+            <li><a href="#settings" data-toggle="pill">Settings</a></li>
+        </ul>
+    </div>
+    <div class="col-md-10">
+        <div class="tab-content">
+            <div class="tab-pane active" id="stores">
+                <h2>Stores</h2>
+                
+                <div class="btn-group">
+                    <button class="btn" id="addStore">Add Store</button>
+                </div>
+
+                <table class="table table-striped table-hover restaurant-menu">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th style="width: 100px;">Phone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mercury</td>
+                            <td>Imriehel</td>
+                            <td>27330331</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="tab-pane" id="settings">
+                <h2>Settings</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="dialog" title="Basic dialog">
+    @using (Ajax.BeginForm("SaveStore", new AjaxOptions()
+    {
+        HttpMethod = "POST",
+        OnSuccess = "saveStoreSuccess",
+        //OnFailure = "saveStoreFailed",
+        //OnComplete = "saveStoreComplete"
+    }, null, new { id = "saveStoreForm"}))
+    {
+        @Html.TextBox("name")
+
+        <button id="saveStoreBtn" class="btn btn-success" type="submit">Save</button>
+
+        <button id="saveStoreCancel" class="btn">Cancel</button>
+    }
+</div>
