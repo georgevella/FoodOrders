@@ -10,7 +10,7 @@ namespace FoodOrder.DataAccess.Model
 
         public virtual string Name { get; set; }
 
-        public virtual int Price { get; set; }
+        public virtual float Price { get; set; }
 
     }
 

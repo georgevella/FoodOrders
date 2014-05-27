@@ -19,6 +19,10 @@ namespace FoodOrder.DataAccess.Model
             set { _menu = value; }
         }
 
+        public virtual string PhoneNumber { get; set; }
+
+        public virtual string Location { get; set; }
+
         public Store()
         {
             
@@ -34,6 +38,8 @@ namespace FoodOrder.DataAccess.Model
             Id(x => x.Id).Column("`id`").GeneratedBy.HiLo("100");
 
             Map(x => x.Name).Column("`name`").Not.Nullable().Unique();
+            Map(x => x.PhoneNumber).Column("`phonenumber`").Not.Nullable();
+            Map(x => x.Location).Column("`location`").Not.Nullable();
 
             HasMany(x => x.Menu).KeyColumn("`storeid`").Not.KeyNullable().Cascade.All();
         }

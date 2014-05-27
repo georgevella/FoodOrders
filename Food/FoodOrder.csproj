@@ -242,9 +242,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\Store\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Store\Create.cshtml" />
+    <Content Include="Areas\Data\Views\web.config" />
+    <Content Include="Areas\Data\Views\Store\Create.cshtml" />
+    <Content Include="Areas\Data\Views\Store\Index.cshtml" />
+    <Content Include="Areas\Data\Views\MenuItem\Index.cshtml" />
+    <Content Include="Areas\Data\Views\MenuItem\Details.cshtml" />
+    <Content Include="Areas\Data\Views\MenuItem\Create.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -279,8 +282,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\Startup.cs" />
-    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\StoreController.cs" />
+    <Compile Include="Areas\Data\DataAreaRegistration.cs" />
+    <Compile Include="Areas\Data\Controllers\MenuItemController.cs" />
+    <Compile Include="Areas\Data\Controllers\StoreController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -307,6 +311,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Data\Views\Shared\EditorTemplates\MenuItem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -315,8 +320,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Data\Models\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

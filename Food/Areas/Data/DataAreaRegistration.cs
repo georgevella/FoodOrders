@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace FoodOrder.Areas.Admin
+namespace FoodOrder.Areas.Data
 {
-    public class AdminAreaRegistration : AreaRegistration 
+    public class DataAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
         {
             get 
             {
-                return "Admin";
+                return "Data";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "Admin_default",
-                "Admin/{controller}/{action}/{id}",
+                "Data_default",
+                "Data/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

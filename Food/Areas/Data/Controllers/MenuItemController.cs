@@ -3,48 +3,60 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
+using FluentNHibernate.Utils;
 using FoodOrder.DataAccess;
 using FoodOrder.DataAccess.Model;
+using MenuItem = FoodOrder.DataAccess.Model.MenuItem;
 
-namespace FoodOrder.Areas.Admin.Controllers
+namespace FoodOrder.Areas.Data.Controllers
 {
-    public class StoreController : Controller
+    public class MenuItemController : Controller
     {
-        private readonly IDataAccessLayer _dal;
+        private IDataAccessLayer _dal;
 
-        public StoreController(IDataAccessLayer dal)
+        public MenuItemController(IDataAccessLayer dal)
         {
             _dal = dal;
         }
-
-        // GET: Admin/Store
+        // GET: Admin/MenuItem
         public ActionResult Index()
         {
-            var stores = _dal.GetRepositoryFor<Store>();
-
-            return View(stores);
+            return View(_dal.GetRepositoryFor<MenuItem>());
         }
 
-        // GET: Admin/Store/Details/5
+        // GET: Admin/MenuItem/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var menus = _dal.GetRepositoryFor<MenuItem>();
+            return View(menus.Get(id));
         }
 
-        // GET: Admin/Store/Create
+        // GET: Admin/MenuItem/Create
         public ActionResult Create()
         {
+            ViewBag.Stores = _dal.GetRepositoryFor<Store>();
             return View();
         }
 
-        // POST: Admin/Store/Create
+        // POST: Admin/MenuItem/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        //public ActionResult Create(MenuItem newitem)
+        public ActionResult Create(MenuItem menuItem, int store)
         {
             try
             {
-                // TODO: Add insert logic here
+                using (var tx = _dal.BeginTransaction())
+                {
+                    var stores = _dal.GetRepositoryFor<Store>();
+                    var menus = _dal.GetRepositoryFor<MenuItem>();
 
+                    var storeInstance = stores.Get(store);
+                    storeInstance.Menu.Add(menuItem);
+                    menus.Insert(menuItem);
+
+                    tx.Commit();
+                }
                 return RedirectToAction("Index");
             }
             catch
@@ -53,13 +65,13 @@ namespace FoodOrder.Areas.Admin.Controllers
             }
         }
 
-        // GET: Admin/Store/Edit/5
+        // GET: Admin/MenuItem/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Admin/Store/Edit/5
+        // POST: Admin/MenuItem/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -75,13 +87,13 @@ namespace FoodOrder.Areas.Admin.Controllers
             }
         }
 
-        // GET: Admin/Store/Delete/5
+        // GET: Admin/MenuItem/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Admin/Store/Delete/5
+        // POST: Admin/MenuItem/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
