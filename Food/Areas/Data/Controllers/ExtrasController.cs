@@ -3,59 +3,57 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
-using FluentNHibernate.Utils;
 using FoodOrder.DataAccess;
 using FoodOrder.DataAccess.Model;
-using MenuItem = FoodOrder.DataAccess.Model.MenuItem;
 
 namespace FoodOrder.Areas.Data.Controllers
 {
-    public class MenuItemController : BaseDataController
+    public class ExtrasController : BaseDataController
     {
-        public MenuItemController(IDataAccessLayer dal) : base(dal)
-        {
-
+        public ExtrasController(IDataAccessLayer dataAccessLayer) : base(dataAccessLayer)
+        {            
         }
-        // GET: Admin/MenuItem
+
+        // GET: Data/Extras
         public ActionResult Index()
         {
-            return View(GetRepositoryFor<MenuItem>());
+            return View(GetRepositoryFor<Extras>());
         }
 
-        // GET: Admin/MenuItem/Details/5
+        // GET: Data/Extras/Details/5
         public ActionResult Details(int id)
         {
-            var menus = GetRepositoryFor<MenuItem>();
-            return View(menus.Get(id));
+            return View();
         }
 
-        // GET: Admin/MenuItem/Create
+        // GET: Data/Extras/Create
         public ActionResult Create()
         {
             ViewBag.Stores = GetRepositoryFor<Store>();
             return View();
         }
 
-        // POST: Admin/MenuItem/Create
+        // POST: Data/Extras/Create
         [HttpPost]
-        //public ActionResult Create(MenuItem newitem)
-        public ActionResult Create(MenuItem menuItem, int store)
+        public ActionResult Create(Extras extraItem, int store)
         {
+            ViewBag.Stores = GetRepositoryFor<Store>();
+
             try
             {
                 using (var tx = DataAccessLayer().BeginTransaction())
                 {
                     var stores = GetRepositoryFor<Store>();
-                    var menus = GetRepositoryFor<MenuItem>();
+                    var extras = GetRepositoryFor<Extras>();
 
                     var storeInstance = stores.Get(store);
-                    storeInstance.Menu.Add(menuItem);
-                    //menuItem.Store = storeInstance;
-                    menus.Insert(menuItem);
+                    //extraItem.Store = storeInstance;
+                    storeInstance.Extras.Add(extraItem);
+                    extras.Insert(extraItem);
 
                     tx.Commit();
                 }
+
                 return RedirectToAction("Index");
             }
             catch
@@ -67,13 +65,13 @@ namespace FoodOrder.Areas.Data.Controllers
             return View();
         }
 
-        // GET: Admin/MenuItem/Edit/5
+        // GET: Data/Extras/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Admin/MenuItem/Edit/5
+        // POST: Data/Extras/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -89,13 +87,13 @@ namespace FoodOrder.Areas.Data.Controllers
             }
         }
 
-        // GET: Admin/MenuItem/Delete/5
+        // GET: Data/Extras/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Admin/MenuItem/Delete/5
+        // POST: Data/Extras/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

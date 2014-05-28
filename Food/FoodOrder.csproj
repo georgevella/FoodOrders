@@ -243,11 +243,14 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Areas\Data\Views\web.config" />
-    <Content Include="Areas\Data\Views\Store\Create.cshtml" />
     <Content Include="Areas\Data\Views\Store\Index.cshtml" />
     <Content Include="Areas\Data\Views\MenuItem\Index.cshtml" />
     <Content Include="Areas\Data\Views\MenuItem\Details.cshtml" />
+    <Content Include="Areas\Data\Views\Store\Create.cshtml" />
     <Content Include="Areas\Data\Views\MenuItem\Create.cshtml" />
+    <Content Include="Areas\Data\Views\Extras\Index.cshtml" />
+    <Content Include="Areas\Data\Views\Extras\Create.cshtml" />
+    <Content Include="Areas\Data\Views\Shared\_Layout.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -282,6 +285,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Areas\Data\Controllers\BaseDataController.cs" />
+    <Compile Include="Areas\Data\Controllers\ExtrasController.cs" />
     <Compile Include="Areas\Data\DataAreaRegistration.cs" />
     <Compile Include="Areas\Data\Controllers\MenuItemController.cs" />
     <Compile Include="Areas\Data\Controllers\StoreController.cs" />

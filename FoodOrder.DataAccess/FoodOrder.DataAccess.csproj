@@ -64,6 +64,7 @@
     <Compile Include="IDataAccessLayerFactory.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Model\DbVersion.cs" />
+    <Compile Include="Model\Extras.cs" />
     <Compile Include="Model\MenuItem.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\OrderItem.cs" />

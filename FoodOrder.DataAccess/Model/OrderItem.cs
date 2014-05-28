@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using FluentNHibernate.Mapping;
 
@@ -10,6 +12,8 @@ namespace FoodOrder.DataAccess.Model
         public virtual int Id { get; set; }
 
         public virtual MenuItem Item { get; set; }
+
+        public virtual IList<Extras> Extras { get; set; }
 
         public virtual DateTime OrderedOn { get; set; }
 
@@ -28,6 +32,12 @@ namespace FoodOrder.DataAccess.Model
             
             References(x => x.Item).Column("`itemId`").Not.Nullable();
             References(x => x.OrderedBy).Column("`orderedBy`").Not.Nullable();
+
+            HasManyToMany(x => x.Extras)
+                .Table("`tbOrderItemExtras`")
+                .ParentKeyColumn("`orderItemId`")
+                .ChildKeyColumn("`extraItemId`")
+                .Cascade.All();
         }
     }
 }

@@ -15,6 +15,10 @@ namespace FoodOrder.DataAccess.Model
 
         public virtual DateTime OrderDate { get; set; }
 
+        public virtual bool AutoCloseOrder { get; set; }
+
+        public virtual DateTime? AutoCloseTime { get; set; }
+
         public virtual IList<OrderItem> Items
         {
             get { return _items; }
@@ -53,6 +57,8 @@ namespace FoodOrder.DataAccess.Model
             Id(x => x.Id).Column("`id`").GeneratedBy.HiLo("300");
 
             Map(x => x.OrderDate).Column("`orderdate`").Not.Nullable();
+            Map(x => x.AutoCloseOrder).Column("`autoCloseOrder`").Not.Nullable();
+            Map(x => x.AutoCloseTime).Column("`autoCloseTime`");
 
             HasMany(x => x.Items).KeyColumn("`orderid`").Not.KeyNullable();
             References(x => x.Store).Column("`storeid`");

@@ -7,6 +7,7 @@ namespace FoodOrder.DataAccess.Model
     public class Store
     {
         private IList<MenuItem> _menu = new List<MenuItem>();
+        private IList<Extras> _extras = new List<Extras>();
 
         [Key]
         public virtual int Id { get; set; }
@@ -17,6 +18,12 @@ namespace FoodOrder.DataAccess.Model
         {
             get { return _menu; }
             set { _menu = value; }
+        }
+
+        public virtual IList<Extras> Extras
+        {
+            get { return _extras; }
+            set { _extras = value; }
         }
 
         public virtual string PhoneNumber { get; set; }
@@ -41,7 +48,8 @@ namespace FoodOrder.DataAccess.Model
             Map(x => x.PhoneNumber).Column("`phonenumber`").Not.Nullable();
             Map(x => x.Location).Column("`location`").Not.Nullable();
 
-            HasMany(x => x.Menu).KeyColumn("`storeid`").Not.KeyNullable().Cascade.All();
+            HasMany(x => x.Menu).KeyColumn("`storeid`").Cascade.All();
+            HasMany(x => x.Extras).KeyColumn("`storeid`").Cascade.All();
         }
     }
 }
