@@ -11,9 +11,9 @@ using MenuItem = FoodOrder.DataAccess.Model.MenuItem;
 
 namespace FoodOrder.Areas.Data.Controllers
 {
-    public class MenuItemController : BaseDataController
+    public class MenuItemsController : BaseDataController
     {
-        public MenuItemController(IDataAccessLayer dal) : base(dal)
+        public MenuItemsController(IDataAccessLayer dal) : base(dal)
         {
 
         }

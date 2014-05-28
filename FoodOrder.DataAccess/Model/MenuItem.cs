@@ -12,6 +12,7 @@ namespace FoodOrder.DataAccess.Model
 
         public virtual float Price { get; set; }
 
+        [Display(Name = "Extras Available")]
         public virtual bool CanHaveExtras { get; set; }
 
         public virtual Store Store { get; set; }
