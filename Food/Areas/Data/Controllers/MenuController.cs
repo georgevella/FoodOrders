@@ -11,16 +11,33 @@ using MenuItem = FoodOrder.DataAccess.Model.MenuItem;
 
 namespace FoodOrder.Areas.Data.Controllers
 {
-    public class MenuItemsController : BaseDataController
+    public class MenuController : BaseDataController
     {
-        public MenuItemsController(IDataAccessLayer dal) : base(dal)
+        public MenuController(IDataAccessLayer dal) : base(dal)
         {
 
         }
-        // GET: Admin/MenuItem
+ 
         public ActionResult Index()
         {
-            return View(GetRepositoryFor<MenuItem>());
+            var menuItems = GetRepositoryFor<MenuItem>();            
+            return View(menuItems);
+        }
+
+        public ActionResult View(int? id)
+        {
+            var menuItems = GetRepositoryFor<MenuItem>();
+
+            if (id.HasValue)
+            {
+                var stores = GetRepositoryFor<Store>();
+                var store = stores.Get(id);
+                ViewBag.Store = store;      // save the store associated with the menu we're viewing
+                return View("Index", menuItems.Where(m => m.Store == store));
+            }
+
+            ViewBag.Store = null;       
+            return View("Index", menuItems);
         }
 
         // GET: Admin/MenuItem/Details/5
@@ -32,8 +49,7 @@ namespace FoodOrder.Areas.Data.Controllers
 
         // GET: Admin/MenuItem/Create
         public ActionResult Create()
-        {
-            ViewBag.Stores = GetRepositoryFor<Store>();
+        {            
             return View();
         }
 
@@ -63,23 +79,33 @@ namespace FoodOrder.Areas.Data.Controllers
                 
             }
 
-            ViewBag.Stores = GetRepositoryFor<Store>();
             return View();
         }
 
         // GET: Admin/MenuItem/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var menus = GetRepositoryFor<MenuItem>();
+            return View(menus.Get(id));
         }
 
         // POST: Admin/MenuItem/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(MenuItem menuItem, int store)
         {
             try
             {
-                // TODO: Add update logic here
+                using (var tx = DataAccessLayer().BeginTransaction())
+                {
+                    var stores = GetRepositoryFor<Store>();
+                    var menus = GetRepositoryFor<MenuItem>();
+
+                    var storeInstance = stores.Get(store);                    
+                    menuItem.Store = storeInstance;
+                    menus.Update(menuItem);
+
+                    tx.Commit();
+                }
 
                 return RedirectToAction("Index");
             }
@@ -89,21 +115,22 @@ namespace FoodOrder.Areas.Data.Controllers
             }
         }
 
-        // GET: Admin/MenuItem/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
         // POST: Admin/MenuItem/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id)
         {
             try
             {
-                // TODO: Add delete logic here
+                using (var tx = DataAccessLayer().BeginTransaction())
+                {
+                    var menus = GetRepositoryFor<MenuItem>();
+                    
+                    menus.Delete(menus.Get(id));                    
+                    tx.Commit();
+                }
 
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                return Json(id);
             }
             catch
             {

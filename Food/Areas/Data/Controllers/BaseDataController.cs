@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using FoodOrder.DataAccess;
+using FoodOrder.DataAccess.Model;
 
 namespace FoodOrder.Areas.Data.Controllers
 {
@@ -7,17 +8,20 @@ namespace FoodOrder.Areas.Data.Controllers
     {
         private readonly IDataAccessLayer _dataAccessLayer;
 
-        public BaseDataController(IDataAccessLayer dataAccessLayer)
+        protected BaseDataController(IDataAccessLayer dataAccessLayer)
         {
             _dataAccessLayer = dataAccessLayer;
+
+            // make the stores available to all controllers in the viewbag
+            ViewBag.Stores = GetRepositoryFor<Store>();
         }
 
-        public IDataAccessLayer DataAccessLayer()
+        protected IDataAccessLayer DataAccessLayer()
         {
             return _dataAccessLayer;
         }
 
-        public IRepository<T> GetRepositoryFor<T>() where T : class
+        protected IRepository<T> GetRepositoryFor<T>() where T : class
         {
             return _dataAccessLayer.GetRepositoryFor<T>();
         }

@@ -29,7 +29,6 @@ namespace FoodOrder.Areas.Data.Controllers
         // GET: Data/Extras/Create
         public ActionResult Create()
         {
-            ViewBag.Stores = GetRepositoryFor<Store>();
             return View();
         }
 
@@ -37,8 +36,6 @@ namespace FoodOrder.Areas.Data.Controllers
         [HttpPost]
         public ActionResult Create(Extras extraItem, int store)
         {
-            ViewBag.Stores = GetRepositoryFor<Store>();
-
             try
             {
                 using (var tx = DataAccessLayer().BeginTransaction())
@@ -59,9 +56,7 @@ namespace FoodOrder.Areas.Data.Controllers
             catch
             {
                 
-            }
-
-            ViewBag.Stores = GetRepositoryFor<Store>();
+            }            
             return View();
         }
 

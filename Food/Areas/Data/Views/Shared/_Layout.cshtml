@@ -1,4 +1,8 @@
 ﻿@using System.Web.Optimization
+@using System.Web.UI.WebControls
+@using FoodOrder.DataAccess
+@using FoodOrder.DataAccess.Model
+@using NHibernate.Linq
 <!DOCTYPE html>
 
 <html>
@@ -31,7 +35,7 @@
     </head>
     <body>
        
-        <div class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -45,8 +49,49 @@
                 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Menu Items", "Index", "MenuItems")</li>
-                        <li>@Html.ActionLink("Stores", "Index", "Store")</li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Stores<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                @{
+                                    foreach (var store in (IRepository<Store>)ViewBag.Stores)
+                                    {
+                                        <li>@Html.ActionLink(store.Name, "Details", "Store", new { id = store.Id }, null)</li>
+                                    }
+                                }
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("All", "Index", "Store")</li>                                                               
+                                <li>@Html.ActionLink("New", "Create", "Store")</li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            @*@Html.ActionLink("Menu Items", "Index", "MenuItems", new Dictionary<string, object>
+                            {
+                                {"class", "dropdown-toggle" },
+                                {"data-toggle", "dropdown"}
+                            })*@
+                            <a href="@Url.Action("Index", "Menu")" class="dropdown-toggle" data-toggle="dropdown">Menu<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("All", "Index", "Menu", null, null)</li>
+                                <li>@Html.ActionLink("Add Item", "Create", "Menu")</li>
+                                <li>@Html.ActionLink("Upload", "UploadCsv", "Menu")</li>
+                                <li class="divider"></li>
+                                @{
+                                    if (((IRepository<Store>) ViewBag.Stores).Any())
+                                    {
+                                        foreach (var store in (IRepository<Store>) ViewBag.Stores)
+                                        {
+                                            <li>@Html.ActionLink(store.Name, "View", "Menu", new {id = store.Id}, null)</li>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <li>@Html.ActionLink("Create a store", "Create", "Store")</li>                                        
+                                    }
+                                }
+
+                            </ul>
+                        </li>
                         <li>@Html.ActionLink("Extras", "Index", "Extras")</li>
                     </ul>
                     @Html.Partial("_LoginPartial")
@@ -54,7 +99,7 @@
             </div>
         </div> 
         
-        <div class="container-fluid body-content">
+        <div class="container body-content">
             
             @RenderBody()
             

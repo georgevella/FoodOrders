@@ -9,21 +9,16 @@ using FoodOrder.DataAccess.Model;
 
 namespace FoodOrder.Areas.Data.Controllers
 {
-    public class StoreController : Controller
+    public class StoreController : BaseDataController
     {
-        private readonly IDataAccessLayer _dal;
-
-        public StoreController(IDataAccessLayer dal)
+        public StoreController(IDataAccessLayer dal) : base(dal)
         {
-            _dal = dal;
         }
 
         // GET: Admin/Store
         public ActionResult Index()
         {
-            var stores = _dal.GetRepositoryFor<Store>();
-
-            return View(stores);
+            return View(GetRepositoryFor<Store>());
         }
 
         // GET: Admin/Store/Details/5
@@ -44,9 +39,9 @@ namespace FoodOrder.Areas.Data.Controllers
         {
             try
             {
-                using (var tx = _dal.BeginTransaction())
+                using (var tx = DataAccessLayer().BeginTransaction())
                 {
-                    var stores = _dal.GetRepositoryFor<Store>();
+                    var stores = DataAccessLayer().GetRepositoryFor<Store>();
                     stores.Insert(newStore);
 
                     tx.Commit();

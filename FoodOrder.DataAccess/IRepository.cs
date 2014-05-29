@@ -20,7 +20,7 @@ namespace FoodOrder.DataAccess
         void InsertOrUpdate(T entity);
         void Delete(T entity);
 
-        IQueryOver<T> Query();
+        IQueryOver<T,T> Query();
     }
 
     public class RepositoryImplementation<T> : IRepository<T> where T : class
@@ -47,7 +47,7 @@ namespace FoodOrder.DataAccess
             return _session.Query<T>().GetEnumerator();
         }
 
-        public IQueryOver<T> Query()
+        public IQueryOver<T,T> Query()
         {
             return _session.QueryOver<T>();
         }
