@@ -1,48 +1,48 @@
-Salad,Tuna Salad, € 3.50 ,,Chips, € 1.20 ,,
-Salad,Chicken Salad, € 4.00 ,,Bacon, € 1.20 ,,
-Salad,Green Salad, € 2.00 ,,Egg, € 1.20 ,,
-Wrap,Chicken Wrap, € 3.00 ,,Sausage, € 1.20 ,,
-Wrap,Beef Wrap, € 3.00 ,,Hard Boiled Egg, € 0.50 ,,
-Breakfast,English Breakfast, € 3.00 ,,,,,
-Bread,"Ftira - Sausage, Egg, Bacon", € 2.10 ,,,,,
-Bread,Ftira - Tuna, € 1.20 ,,,,,
-Bread,Ftira - Ham & Cheese, € 1.20 ,,,,,
-Bread,Ftira - Egg Bacon Cheese, € 1.80 ,,,,,
-Bread,"Ftira - Meat, Egg, Cheese", € 2.00 ,,,,,
-Bread,"Ciabatta - Sausage, Egg, Bacon", € 2.10 ,,,,,
-Bread,Ciabatta - Tuna, € 1.50 ,,,,,
-Bread,Ciabatta - Ham & Cheese, € 1.20 ,,,,,
-Bread,Ciabatta - Egg Bacon Cheese, € 1.80 ,,,,,
-Bread,"Ciabatta - Meat, Egg, Cheese", € 2.00 ,,,,,
-Bread,"Baguette - Sausage, Egg, Bacon", € 2.10 ,,,,,
-Bread,Baguette - Tuna, € 1.20 ,,,,,
-Bread,Baguette - Ham & Cheese, € 1.50 ,,,,,
-Bread,Baguette - Egg Bacon Cheese, € 1.80 ,,,,,
-Bread,"Baguette - Meat, Egg, Cheese", € 2.00 ,,,,,
-Bread,"Sandwiches - Sausage, Egg, Bacon", € 2.10 ,,,,,
-Bread,Sandwiches - Tuna, € 1.20 ,,,,,
-Bread,Sandwiches - Ham & Cheese, € 1.20 ,,,,,
-Bread,Sandwiches - Egg Bacon Cheese, € 1.80 ,,,,,
-Bread,"Sandwiches - Meat, Egg, Cheese", € 2.00 ,,,,,
-Pasta,Penne Funghi, € 3.00 ,,,,,
-Pasta,Rabbit Spaghetti, € 3.50 ,,,,,
-Pasta,Spaghetti Bolognese, € 3.00 ,,,,,
-Pasta,Riso Al Forno, € 1.80 ,,,,,
-Pasta,Imqarrun il-Forn, € 1.80 ,,,,,
-Pasta,Ravjul (zalza pronta), € 3.20 ,,,,,
-Pasta,Ravjul (no zalza), € 3.00 ,,,,,
-Burger,Cheese Burger, € 2.40 ,,,,,
-Burger,Beef Burger, € 2.30 ,,,,,
-Burger,Chicken Burger, € 2.50 ,,,,,
-Burger,Breaded Fish Fillet, € 2.50 ,,,,,
-Burger,Mercury Burger, € 3.50 ,,,,,
-Burger,Veggie Burger, € 2.80 ,,,,,
-Burger,Cordon Bleu, € 2.80 ,,,,,
-Burger,Blue Burger, € 2.80 ,,,,,
-Lunch,Mixed Grill, € 5.00 ,,,,,
-Lunch,Rabbit Spaghetti, € 8.50 ,,,,,
-Lunch,Horse Meat, € 7.50 ,,,,,
-,Octopus Salad, € 5.00 ,,,,,
-Salad,Green Salad + Boiled Egg, € 2.50 ,,,,,
-Salad,Tuna Salad + Boiled Egg, € 4.00 ,,,,,
-Bread,"Ftira - Meat, Back, Hard Boiled Egg", € 2.10 ,,,,,
+Salad,Tuna Salad,3.50
+Salad,Chicken Salad,4.00
+Salad,Green Salad,2.00
+Wrap,Chicken Wrap,3.00
+Wrap,Beef Wrap,3.00
+Breakfast,English Breakfast,3.00
+Bread,"Ftira - Sausage, Egg, Bacon",2.10
+Bread,Ftira - Tuna,1.20
+Bread,Ftira - Ham & Cheese,1.20
+Bread,Ftira - Egg Bacon Cheese,1.80
+Bread,"Ftira - Meat, Egg, Cheese",2.00
+Bread,"Ciabatta - Sausage, Egg, Bacon",2.10
+Bread,Ciabatta - Tuna,1.50
+Bread,Ciabatta - Ham & Cheese,1.20
+Bread,Ciabatta - Egg Bacon Cheese,1.80
+Bread,"Ciabatta - Meat, Egg, Cheese",2.00
+Bread,"Baguette - Sausage, Egg, Bacon",2.10
+Bread,Baguette - Tuna,1.20
+Bread,Baguette - Ham & Cheese,1.50
+Bread,Baguette - Egg Bacon Cheese,1.80
+Bread,"Baguette - Meat, Egg, Cheese",2.00
+Bread,"Sandwiches - Sausage, Egg, Bacon",2.10
+Bread,Sandwiches - Tuna,1.20
+Bread,Sandwiches - Ham & Cheese,1.20
+Bread,Sandwiches - Egg Bacon Cheese,1.80
+Bread,"Sandwiches - Meat, Egg, Cheese",2.00
+Pasta,Penne Funghi,3.00
+Pasta,Rabbit Spaghetti,3.50
+Pasta,Spaghetti Bolognese,3.00
+Pasta,Riso Al Forno,1.80
+Pasta,Imqarrun il-Forn,1.80
+Pasta,Ravjul (zalza pronta),3.20
+Pasta,Ravjul (no zalza),3.00
+Burger,Cheese Burger,2.40
+Burger,Beef Burger,2.30
+Burger,Chicken Burger,2.50
+Burger,Breaded Fish Fillet,2.50
+Burger,Mercury Burger,3.50
+Burger,Veggie Burger,2.80
+Burger,Cordon Bleu,2.80
+Burger,Blue Burger,2.80
+Lunch,Mixed Grill,5.00
+Lunch,Rabbit Spaghetti,8.50
+Lunch,Horse Meat,7.50
+,Octopus Salad,5.00
+Salad,Green Salad + Boiled Egg,2.50
+Salad,Tuna Salad + Boiled Egg,4.00
+Bread,"Ftira - Meat, Back, Hard Boiled Egg",2.10

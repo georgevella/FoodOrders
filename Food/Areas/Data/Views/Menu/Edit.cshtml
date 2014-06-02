@@ -42,13 +42,6 @@
                 </div>
             </div>
         </div>
-        
-        <div class="form-group">
-            <label class="control-label col-md-2">Store</label>
-            <div class="col-md-10">
-                @Html.DropDownList("store", new SelectList(ViewBag.Stores, "Id", "Name", Model.Store.Id), new { @class = "form-control" })
-            </div>
-        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

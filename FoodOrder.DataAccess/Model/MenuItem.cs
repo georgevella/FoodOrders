@@ -10,6 +10,8 @@ namespace FoodOrder.DataAccess.Model
 
         public virtual string Name { get; set; }
 
+        [Display(Name="Price")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
         public virtual float Price { get; set; }
 
         [Display(Name = "Extras Available")]

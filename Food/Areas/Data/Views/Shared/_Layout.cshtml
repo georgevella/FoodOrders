@@ -31,10 +31,27 @@
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
         @Scripts.Render("~/bundles/jqueryui")
-        @Scripts.Render("~/bundles/knockout")
+        @Scripts.Render("~/bundles/knockout")        
+        @Scripts.Render("~/bundles/jquery-fileupload")
+        
+        <script>
+
+            $(function() {
+                $('#open-file-upload-dlg').click(function() {
+                    $('#csvFileUploadDialog').dialog("open");
+                });
+            });
+            
+
+        </script>
     </head>
-    <body>
-       
+    <body>        
+        @{
+            Html.RenderAction("UploadCsv", "Menu");
+        }
+        
+
+
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -74,7 +91,8 @@
                             <ul class="dropdown-menu">
                                 <li>@Html.ActionLink("All", "Index", "Menu", null, null)</li>
                                 <li>@Html.ActionLink("Add Item", "Create", "Menu")</li>
-                                <li>@Html.ActionLink("Upload", "UploadCsv", "Menu")</li>
+                                @*<li>@Html.ActionLink("Upload", "UploadCsv", "Menu")</li>*@
+                                <li><a href="#" id="open-file-upload-dlg">Upload</a></li>
                                 <li class="divider"></li>
                                 @{
                                     if (((IRepository<Store>) ViewBag.Stores).Any())
@@ -110,8 +128,6 @@
 
         </div>
         
-
-        @RenderSection("scripts", required: false)
-
+        @RenderSection("scripts", required: false)        
     </body>
 </html>

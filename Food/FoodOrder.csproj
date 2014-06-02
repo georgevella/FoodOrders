@@ -44,6 +44,12 @@
     <Reference Include="FluentNHibernate">
       <HintPath>..\packages\FluentNHibernate.1.4.0.0\lib\net35\FluentNHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="GSoft.Framework">
+      <HintPath>..\deps\GSoft.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="GSoft.Framework.IO">
+      <HintPath>..\deps\GSoft.Framework.IO.dll</HintPath>
+    </Reference>
     <Reference Include="Iesi.Collections">
       <HintPath>..\packages\Iesi.Collections.3.2.0.1001\lib\Net35\Iesi.Collections.dll</HintPath>
     </Reference>
@@ -172,6 +178,12 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\img\logo.png" />
+    <Content Include="Content\jQuery.FileUpload\css\jquery.fileupload-noscript.css" />
+    <Content Include="Content\jQuery.FileUpload\css\jquery.fileupload-ui-noscript.css" />
+    <Content Include="Content\jQuery.FileUpload\css\jquery.fileupload-ui.css" />
+    <Content Include="Content\jQuery.FileUpload\css\jquery.fileupload.css" />
+    <Content Include="Content\jQuery.FileUpload\img\loading.gif" />
+    <Content Include="Content\jQuery.FileUpload\img\progressbar.gif" />
     <Content Include="Content\site.css" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -245,13 +257,13 @@
     <Content Include="Areas\Data\Views\web.config" />
     <Content Include="Areas\Data\Views\Store\Index.cshtml" />
     <Content Include="Areas\Data\Views\Menu\Index.cshtml" />
-    <Content Include="Areas\Data\Views\Menu\Details.cshtml" />
     <Content Include="Areas\Data\Views\Store\Create.cshtml" />
     <Content Include="Areas\Data\Views\Menu\Create.cshtml" />
     <Content Include="Areas\Data\Views\Extras\Index.cshtml" />
     <Content Include="Areas\Data\Views\Extras\Create.cshtml" />
     <Content Include="Areas\Data\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Data\Views\Extras\Details.cshtml" />
+    <Content Include="Areas\Data\Views\Menu\_CsvFileUploadView.cshtml" />
     <Content Include="Areas\Data\Views\Menu\Edit.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -264,6 +276,17 @@
     <Content Include="Scripts\jquery-ui-1.10.4.js" />
     <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
     <None Include="Scripts\jquery.linq-vsdoc.js" />
+    <Content Include="Scripts\jQuery.FileUpload\cors\jquery.postmessage-transport.js" />
+    <Content Include="Scripts\jQuery.FileUpload\cors\jquery.xdr-transport.js" />
+    <Content Include="Scripts\jQuery.FileUpload\jquery.fileupload-audio.js" />
+    <Content Include="Scripts\jQuery.FileUpload\jquery.fileupload-image.js" />
+    <Content Include="Scripts\jQuery.FileUpload\jquery.fileupload-jquery-ui.js" />
+    <Content Include="Scripts\jQuery.FileUpload\jquery.fileupload-process.js" />
+    <Content Include="Scripts\jQuery.FileUpload\jquery.fileupload-ui.js" />
+    <Content Include="Scripts\jQuery.FileUpload\jquery.fileupload-validate.js" />
+    <Content Include="Scripts\jQuery.FileUpload\jquery.fileupload-video.js" />
+    <Content Include="Scripts\jQuery.FileUpload\jquery.fileupload.js" />
+    <Content Include="Scripts\jQuery.FileUpload\jquery.iframe-transport.js" />
     <Content Include="Scripts\jquery.linq.js" />
     <Content Include="Scripts\jquery.linq.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
@@ -328,7 +351,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Data\Models\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
-using FluentNHibernate.Utils;
 using FoodOrder.DataAccess;
 using FoodOrder.DataAccess.Model;
+using GSoft.Framework.IO;
 using MenuItem = FoodOrder.DataAccess.Model.MenuItem;
 
 namespace FoodOrder.Areas.Data.Controllers
@@ -38,13 +38,6 @@ namespace FoodOrder.Areas.Data.Controllers
 
             ViewBag.Store = null;       
             return View("Index", menuItems);
-        }
-
-        // GET: Admin/MenuItem/Details/5
-        public ActionResult Details(int id)
-        {
-            var menus = GetRepositoryFor<MenuItem>();
-            return View(menus.Get(id));
         }
 
         // GET: Admin/MenuItem/Create
@@ -137,5 +130,76 @@ namespace FoodOrder.Areas.Data.Controllers
                 return View();
             }
         }
+
+        public ActionResult UploadCsv()
+        {
+            return PartialView("_CsvFileUploadView");
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> UploadCsv(FormCollection collection)
+        {
+            var r = new List<UploadFilesResult>();
+
+            //Thread.Sleep(30*1000);
+
+            foreach (string file in Request.Files)
+            {
+                var hpf = Request.Files[file] as HttpPostedFileBase;
+                if (hpf.ContentLength == 0)
+                    continue;
+
+                await Task.Run(() =>
+                {
+                    var engine = new DelimeterSeperatedFile<CsvMenuEntry>();
+                    var entries = engine.Read(new StreamReader(hpf.InputStream));
+
+                    var store = GetRepositoryFor<Store>().First();
+                    var menuItems = GetRepositoryFor<MenuItem>();
+                    using (var tx = DataAccessLayer().BeginTransaction())
+                    {
+                        foreach (var entry in entries)
+                        {
+                            menuItems.Insert(new MenuItem()
+                            {
+                                Name = entry.Name,
+                                Price = entry.Price,
+                                CanHaveExtras = true,
+                                Store = store
+                            });
+                        }
+
+                        tx.Commit();
+                    }
+                });
+
+
+
+                r.Add(new UploadFilesResult()
+                {
+                    Name = hpf.FileName,
+                    Length = hpf.ContentLength,
+                    Type = hpf.ContentType
+                });
+            }
+            return Json(r);
+        }
     }
+
+    public class UploadFilesResult
+    {
+        public string Name { get; set; }
+        public int Length { get; set; }
+        public string Type { get; set; }
+    }
+
+    public class CsvMenuEntry
+    {
+        public string Category { get; set; }
+        public string Name { get; set; }
+        public float Price { get; set; }
+    }
+
+
+
 }
