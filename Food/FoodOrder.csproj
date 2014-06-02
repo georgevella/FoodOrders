@@ -85,6 +85,10 @@
     <Reference Include="NHibernate.Caches.SysCache">
       <HintPath>..\packages\NHibernate.Caches.SysCache.3.3.3.4000\lib\net35\NHibernate.Caches.SysCache.dll</HintPath>
     </Reference>
+    <Reference Include="NHibernate.IdentityStore, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\deps\NHibernate.IdentityStore.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
@@ -354,10 +358,6 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\libraries\NHibernate.Identity20\NHibernate.IdentityStore\NHibernate.IdentityStore.csproj">
-      <Project>{7fd8396c-c0ee-4ca8-9838-08f9fa78c93f}</Project>
-      <Name>NHibernate.IdentityStore</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FoodOrder.DataAccess\FoodOrder.DataAccess.csproj">
       <Project>{730C7A58-91EB-4C4E-A85D-077DAD0A4AA5}</Project>
       <Name>FoodOrder.DataAccess</Name>
