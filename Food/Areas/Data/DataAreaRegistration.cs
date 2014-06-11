@@ -17,7 +17,7 @@ namespace FoodOrder.Areas.Data
             context.MapRoute(
                 "Data_default",
                 "Data/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index", controller = "Menu", id = UrlParameter.Optional }
             );
         }
     }
