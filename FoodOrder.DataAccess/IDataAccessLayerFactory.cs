@@ -55,7 +55,7 @@ namespace FoodOrder.DataAccess
             var csSetting = ConfigurationManager.ConnectionStrings["FoodOrderDb"];
 
             var cfg = InternalBuildConfiguration()
-                .Database(MsSqlConfiguration.MsSql2012.ConnectionString(b => b.FromConnectionStringWithKey("FoodOrderDb")))
+                .Database(MsSqlConfiguration.MsSql2008.ConnectionString(b => b.FromConnectionStringWithKey("FoodOrderDb")).Dialect<MsSqlAzure2008Dialect>())                
                 .BuildConfiguration();
 
             // check the database
@@ -64,10 +64,10 @@ namespace FoodOrder.DataAccess
             {
                 con.ConnectionString = csSetting.ConnectionString;
                 con.Open();
-                var metadata = new DatabaseMetadata(con, new MsSql2012Dialect());
+                var metadata = new DatabaseMetadata(con, new MsSqlAzure2008Dialect());
                 try
                 {
-                    cfg.ValidateSchema(new MsSql2012Dialect(), metadata);
+                    cfg.ValidateSchema(new MsSqlAzure2008Dialect(), metadata);
                 }
                 catch (HibernateException e)
                 {
